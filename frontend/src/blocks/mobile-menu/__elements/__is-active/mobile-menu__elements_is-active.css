@@ -1,0 +1,3 @@
+.mobile-menu__elements_is-active {
+  transform: translateY(115px);
+}

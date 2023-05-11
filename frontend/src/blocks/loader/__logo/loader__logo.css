@@ -1,0 +1,22 @@
+.loader__logo {
+}
+
+@media screen and (max-width: 968px) {
+  .loader__logo {
+    margin-left: 44px;
+  }
+}
+
+@media screen and (max-width: 740px) {
+  .loader__logo {
+    margin-left: 27px;
+    max-width: 104px;
+    max-height: 24px;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .loader__logo {
+    margin: 0 auto;
+  }
+}

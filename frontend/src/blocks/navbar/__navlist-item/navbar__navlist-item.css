@@ -1,0 +1,10 @@
+.navbar__navlist-item {
+  align-self: flex-start;
+  display: flex;
+}
+
+@media screen and (max-width: 500px) {
+  .navbar__navlist-item {
+    margin: 0 auto;
+  }
+}

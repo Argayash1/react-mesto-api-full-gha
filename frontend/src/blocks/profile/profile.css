@@ -1,0 +1,29 @@
+.profile {
+    max-width: 880px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 auto;
+    font-family: 'Inter', 'Helvetica Neue', 'Arial', sans-serif;
+}
+
+@media screen and (max-width: 968px) {
+    .profile {
+        margin-left: 44px;
+        margin-right: 44px;
+    }
+}
+
+@media screen and (max-width: 740px) {
+    .profile {
+        flex-direction: column;
+        justify-content: flex-start;
+    }
+}
+
+@media screen and (max-width: 368px) {
+    .profile {
+        margin-left: 0;
+        margin-right: 0;
+    }
+}

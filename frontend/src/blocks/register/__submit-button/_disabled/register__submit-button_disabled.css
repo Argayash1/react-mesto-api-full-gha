@@ -1,0 +1,11 @@
+.register__submit-button_disabled {
+  color: #a9a9a9;
+  border: 1px solid #a9a9a9;
+  cursor: auto;
+  opacity: 1;
+  transition: opacity 0.5s linear;
+}
+
+.register__submit-button_disabled:hover {
+  opacity: 1;
+}

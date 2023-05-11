@@ -1,0 +1,16 @@
+.navbar__navlist-button {
+  visibility: hidden;
+  cursor: pointer;
+  transition: opacity 0.5s linear;
+}
+
+.navbar__navlist-button:hover {
+  opacity: 0.8;
+}
+
+@media screen and (max-width: 500px) {
+  .navbar__navlist-button {
+    visibility: visible;
+    margin-right: 27px;
+  }
+}

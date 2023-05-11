@@ -1,0 +1,20 @@
+.navbar__navlist-elements {
+  display: flex;
+  align-items: flex-start;
+  padding-top: 8px;
+  transition: transform 0.3s linear;
+}
+
+@media screen and (max-width: 500px) {
+  .navbar__navlist-elements {
+    position: fixed;
+    top: -105px;
+    right: 0;
+    left: 0;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 41px auto 0;
+    text-align: center;
+  }
+}

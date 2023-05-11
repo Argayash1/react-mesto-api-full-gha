@@ -1,0 +1,14 @@
+@keyframes printed-text {
+  from {
+    width: 0;
+  }
+}
+
+.loader__animated-text {
+  width: 2ch;
+  margin: 0;
+  padding: 0;
+  white-space: no-wrap;
+  overflow: hidden;
+  animation: printed-text 0.65s ease infinite;
+}

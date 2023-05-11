@@ -1,0 +1,11 @@
+.loader__spinner {
+  visibility: visible;
+  max-width: 880px;
+  margin: 25px auto;
+}
+
+@media screen and (max-width: 640px) {
+  .loader__spinner {
+    margin: 25px 0;
+  }
+}

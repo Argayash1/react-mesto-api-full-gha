@@ -1,0 +1,18 @@
+.mobile-menu__button {
+  visibility: hidden;
+  max-width: 100px;
+  margin: 15px auto 0;
+  background-color: black;
+  color: #a9a9a9;
+  border: none;
+  font-size: 18px;
+  line-height: 22px;
+  text-align: center;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 580px) {
+  .mobile-menu__button {
+    visibility: visible;
+  }
+}

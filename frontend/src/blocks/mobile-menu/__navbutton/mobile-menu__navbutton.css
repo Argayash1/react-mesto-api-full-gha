@@ -1,0 +1,17 @@
+.mobile-menu__navbutton {
+  min-width: 30px;
+  cursor: pointer;
+  visibility: hidden;
+  transition: opacity 0.5s linear;
+}
+
+.mobile-menu__navbutton:hover {
+  opacity: 0.8;
+}
+
+@media screen and (max-width: 580px) {
+  .mobile-menu__navbutton {
+    margin-right: 27px;
+    visibility: visible;
+  }
+}

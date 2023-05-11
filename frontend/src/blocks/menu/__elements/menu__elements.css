@@ -1,0 +1,13 @@
+.menu__elements {
+  visibility: visible;
+  display: flex;
+  align-items: flex-start;
+  padding-top: 8px;
+  transition: transform 0.3s linear;
+}
+
+@media screen and (max-width: 580px) {
+  .menu__elements {
+    visibility: hidden;
+  }
+}

@@ -1,0 +1,17 @@
+.navbar__button {
+  margin-left: 24px;
+  background-color: black;
+  color: #a9a9a9;
+  border: none;
+  font-size: 18px;
+  line-height: 22px;
+  text-align: center;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 500px) {
+  .navbar__button {
+    max-width: 100px;
+    margin: 15px auto 0;
+  }
+}

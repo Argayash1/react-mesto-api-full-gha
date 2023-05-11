@@ -1,0 +1,11 @@
+.popup__register-image {
+  width: 120px;
+  height: 120px;
+  margin: 28px auto 0;
+}
+
+@media screen and (max-width: 740px) {
+  .popup__register-image {
+    margin-top: 23px;
+  }
+}

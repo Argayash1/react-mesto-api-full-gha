@@ -1,0 +1,15 @@
+.mobile-menu__elements {
+  position: fixed;
+  top: -120px;
+  right: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 41px auto 0;
+  padding-top: 8px;
+  text-align: center;
+  visibility: visible;
+  transition: transform 0.3s linear;
+}

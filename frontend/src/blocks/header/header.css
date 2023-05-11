@@ -1,0 +1,18 @@
+.header {
+  max-width: 880px;
+  min-height: 74px;
+  margin: 0 auto;
+  border-bottom: 1px solid rgba(84, 84, 84, 0.7);
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  font-family: "Inter", "Helvetica Neue", "Arial", sans-serif;
+  transition: margin 0.3s linear;
+}
+
+@media screen and (max-width: 968px) {
+  .header {
+    max-width: 100%;
+    min-height: 55px;
+  }
+}

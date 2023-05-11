@@ -1,0 +1,8 @@
+.profile__avatar-button {
+  background: #2a2c2f;
+  background-image: url(../../../images/profile-cousteau-hover.svg);
+  background-position: center;
+  background-repeat: no-repeat;
+  border-radius: 50%;
+  border: none;
+}

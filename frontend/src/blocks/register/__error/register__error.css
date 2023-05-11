@@ -1,0 +1,10 @@
+.register__error {
+  max-width: 358px;
+  min-height: 27px;
+  padding: 0;
+  margin: 3px 0 0;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 1.15;
+  color: #ff0000;
+}

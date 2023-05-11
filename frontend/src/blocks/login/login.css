@@ -1,0 +1,7 @@
+.login {
+  max-width: 880px;
+  display: flex;
+  flex-direction: column;
+  font-family: "Inter", "Helvetica Neue", "Arial", sans-serif;
+  margin: 0 auto;
+}
