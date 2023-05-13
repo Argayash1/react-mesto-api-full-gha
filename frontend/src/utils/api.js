@@ -20,12 +20,14 @@ class Api {
 
   getUserInfo() {
     return this._request("/users/me", {
+      credentials: 'include', // теперь куки посылаются вместе с запросом
       headers: this._headers,
     });
   }
 
   getInitialCards() {
     return this._request("/cards", {
+      credentials: 'include', // теперь куки посылаются вместе с запросом
       headers: this._headers,
     });
   }
@@ -33,6 +35,7 @@ class Api {
   editProfile({ name, about }) {
     return this._request("/users/me", {
       method: "PATCH",
+      credentials: 'include', // теперь куки посылаются вместе с запросом
       headers: this._headers,
       body: JSON.stringify({
         name,
@@ -44,6 +47,7 @@ class Api {
   addNewCard({ name, link }) {
     return this._request("/cards", {
       method: "POST",
+      credentials: 'include', // теперь куки посылаются вместе с запросом
       headers: this._headers,
       body: JSON.stringify({
         name: name,
@@ -55,6 +59,7 @@ class Api {
   deleteCard(cardId) {
     return this._request(`/cards/${cardId}`, {
       method: "DELETE",
+      credentials: 'include', // теперь куки посылаются вместе с запросом
       headers: this._headers,
     });
   }
@@ -62,6 +67,7 @@ class Api {
   addNewAvatar({ avatar }) {
     return this._request("/users/me/avatar", {
       method: "PATCH",
+      credentials: 'include', // теперь куки посылаются вместе с запросом
       headers: this._headers,
       body: JSON.stringify({
         avatar: avatar,
@@ -72,6 +78,7 @@ class Api {
   changeLikeCardStatus(cardId, isLiked) {
     return this._request(`/cards/${cardId}/likes`, {
       method: `${isLiked ? "PUT" : "DELETE"}`,
+      credentials: 'include', // теперь куки посылаются вместе с запросом
       headers: this._headers,
     });
   }
@@ -79,9 +86,9 @@ class Api {
 
 // Создаём экземпляр класса Api
 const api = new Api({
-  baseUrl: "https://mesto.nomoreparties.co/v1/cohort-59",
+  baseUrl: "http://localhost:3005",
   headers: {
-    authorization: "cfebb862-70aa-4cd6-a9bd-6d5609babeaa",
+    authorization: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NDVkM2FmNGQyOTg4OWMyMDQ3ZjJmM2UiLCJpYXQiOjE2ODM4NzUzNzQsImV4cCI6MTY4NDQ4MDE3NH0.uluiRlHMziNsU1rbOFd2YiM4iZlPVKDQd8n9Lootcts",
     "Content-Type": "application/json",
   },
 });

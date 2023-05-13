@@ -33,13 +33,13 @@ const getUserById = (req, res, next) => {
   User.findById(userId)
     .then((user) => {
       if (!user) {
-        throw new NotFoundError('Пользователь по указанному _id не найден');
+        throw new NotFoundError('Такого пользователя нет');
       }
       res.send(user);
     })
     .catch((err) => {
       if (err instanceof CastError) {
-        next(new BadRequestError('Передан некорректный ID пользователя'));
+        next(new BadRequestError('Некорректный Iв пользователя'));
       } else {
         next(err);
       }
@@ -69,18 +69,18 @@ const createUser = (req, res, next) => {
       password: hash, // записываем хеш в базу
     }))
     // вернём записанные в базу данные
-    .then((user) => res.status(CREATED_201).send(user))
+    .then((user) => res.status(CREATED_201).send({ data: user }))
     // данные не записались, вернём ошибку
     .catch((err) => {
       if (err.code === 11000) {
-        next(new ConflictError('Пользователь с таким e-mail уже существует'));
+        next(new ConflictError('Пользователь с таким email уже зарегистрирован'));
         return;
       }
       if (err instanceof ValidationError) {
         const errorMessage = Object.values(err.errors)
           .map((error) => error.message)
           .join(', ');
-        next(new BadRequestError(`Переданы некорректные данные при создании пользователя: ${errorMessage}`));
+        next(new BadRequestError(`Некорректные данные: ${errorMessage}`));
       } else {
         next(err);
       }
@@ -100,7 +100,7 @@ const login = (req, res, next) => {
         // token - наш JWT токен, который мы отправляем
         maxAge: 3600000,
         httpOnly: true,
-        sameSite: true, // указали браузеру посылать куки, только если запрос с того же домена
+        // sameSite: true, // указали браузеру посылать куки, только если запрос с того же домена
       })
       // отправим токен пользователю
         .send({ token });
@@ -127,7 +127,7 @@ const updateUserData = (req, res, next, updateOptions) => {
   )
     .then((user) => {
       if (!user) {
-        throw new NotFoundError('Пользователь по указанному _id не найден');
+        throw new NotFoundError('Такого пользователя нет');
       }
       res.send(user);
     })
@@ -136,11 +136,11 @@ const updateUserData = (req, res, next, updateOptions) => {
         const errorMessage = Object.values(err.errors)
           .map((error) => error.message)
           .join(', ');
-        next(new BadRequestError(`Переданы некорректные данные: ${errorMessage}`));
+        next(new BadRequestError(`Некорректные данные: ${errorMessage}`));
         return;
       }
       if (err instanceof CastError) {
-        next(new BadRequestError('Передан некорректный ID пользователя'));
+        next(new BadRequestError('Некорректный Id пользователя'));
       } else {
         next(err);
       }

@@ -12,7 +12,7 @@ module.exports = (req, res, next) => {
 
   // убеждаемся, что он есть
   if (!token) {
-    return next(new UnauthorizedError('Необходима авторизация'));
+    return next(new UnauthorizedError('С токеном что-то не так'));
   }
 
   let payload;
@@ -22,7 +22,7 @@ module.exports = (req, res, next) => {
     payload = jwt.verify(token, JWT_SECRET);
   } catch (err) {
     // отправим ошибку, если не получилось
-    return next(new UnauthorizedError('Необходима авторизация'));
+    return next(new UnauthorizedError('С токеном что-то не так'));
   }
   req.user = payload; // записываем пейлоуд в объект запроса
 

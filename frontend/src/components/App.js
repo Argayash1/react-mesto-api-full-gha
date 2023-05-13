@@ -62,18 +62,18 @@ function App() {
   }, [isMobileMenuOpen]);
 
   const tokenCheck = useCallback(() => {
-    // если у пользователя есть токен в localStorage,
-    // эта функция проверит валидность токена
-    const jwt = localStorage.getItem('jwt');
-    if (jwt) {
-      // проверим токен
+    // если пользователь авторизован,
+    // эта функция проверит, есть ли данные в req.user._id на сервере 
+    const authorized = localStorage.getItem('authorized')
+    if (authorized) {
+      // проверим, есть ли данные в req.user._id
       auth
-        .getContent(jwt)
+        .getContent()
         .then((userData) => {
-          if (userData) {
+          if (userData.email) {
             // авторизуем пользователя
             setLoggedIn(true);
-            setUserEmail(userData.data.email);
+            setUserEmail(userData.email);
             navigate('/', { replace: true });
           }
         })
@@ -86,7 +86,7 @@ function App() {
     } else {
       setLoading(false);
     }
-  }, [navigate]);
+    }, [navigate]);
 
   useEffect(() => {
     tokenCheck();
@@ -135,7 +135,7 @@ function App() {
         if (data.token) {
           setLoggedIn(true);
           setUserEmail(values.email);
-          localStorage.setItem('jwt', data.token);
+          localStorage.setItem('authorized', 'true');
           navigate('/', { replace: true });
         }
       })
@@ -153,12 +153,19 @@ function App() {
   };
 
   function handleSignOut() {
-    setLoggedIn(false);
-    localStorage.removeItem('jwt');
-    navigate('sign-in', { replace: true });
-    setUserEmail('');
-    setErrorText('');
-    setIsMobileMenuOpen(false);
+    auth
+      .signout()
+      .then(() => {
+        localStorage.removeItem('authorized')
+        setLoggedIn(false);
+        navigate('sign-in', { replace: true });
+        setUserEmail('');
+        setErrorText('');
+        setIsMobileMenuOpen(false);
+  })
+     .catch((err) => { 
+       console.log(err);
+  });
   }
 
   function handleCardLike(card) {

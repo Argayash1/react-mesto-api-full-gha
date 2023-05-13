@@ -12,6 +12,7 @@ const helmet = require('helmet');
 const errorHandler = require('./middlewares/errorHandler');
 const limiter = require('./middlewares/limiter');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
+const corsHandler = require('./middlewares/corsHandler');
 
 // Импорт роутера
 const router = require('./routes/index');
@@ -27,8 +28,10 @@ mongoose.connect(DB, {
   useNewUrlParser: true,
 });
 
+app.use(corsHandler);
+
 // Миддлвэры для безопасности
-app.use(limiter);
+// app.use(limiter);
 app.use(helmet());
 
 // Миддлвэры для парсинга

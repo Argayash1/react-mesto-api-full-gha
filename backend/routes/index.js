@@ -24,7 +24,7 @@ router.get('/signout', auth, logout); // добавили роутер для в
 
 // роут для запросов по несуществующим URL
 router.use('*', auth, (req, res, next) => {
-  next(new NotFoundError('Запрашиваемый URL не существует'));
+  next(new NotFoundError('Ресурс не найден. Проверьте URL и метод запроса'));
 });
 
 module.exports = router; // экспортировали этот роутер

@@ -35,7 +35,7 @@ const createCard = (req, res, next) => {
         const errorMessage = Object.values(err.errors)
           .map((error) => error.message)
           .join(' ');
-        next(new BadRequestError(`Переданы некорректные данные при создании карточки: ${errorMessage}`));
+        next(new BadRequestError(`Некорректные данные: ${errorMessage}`));
       } else {
         next(err);
       }
@@ -50,17 +50,17 @@ const deleteCardById = (req, res, next) => {
   Card.findById(cardId)
     .then((card) => {
       if (!card) {
-        throw new NotFoundError('Карточка с указанным _id не найдена');
+        throw new NotFoundError('Такой карточки нет');
       }
       if (userId !== card.owner.toString()) {
-        throw new ForbiddenError('К сожалению, Вы не можете удалить эту карточку');
+        throw new ForbiddenError('Можно удалять только собственные посты');
       }
       return Card.findByIdAndRemove(cardId)
         .then(() => res.send({ message: 'Пост удалён' }));
     })
     .catch((err) => {
       if (err instanceof CastError) {
-        next(new BadRequestError('Передан некорректный ID карточки'));
+        next(new BadRequestError('Некорректный Id карточки'));
       } else {
         next(err);
       }
@@ -74,7 +74,7 @@ const changeLikeCardStatus = (req, res, next, likeOtpions) => {
   Card.findById(cardId)
     .then((card) => {
       if (!card) {
-        throw new NotFoundError('Передан несуществующий _id карточки');
+        throw new NotFoundError('Такой карточки нет');
       }
       return Card.findByIdAndUpdate(cardId, likeOtpions, { new: true })
         .then((cardForLike) => cardForLike.populate(['owner', 'likes']))
@@ -82,7 +82,7 @@ const changeLikeCardStatus = (req, res, next, likeOtpions) => {
     })
     .catch((err) => {
       if (err instanceof CastError) {
-        next(new BadRequestError('Переданы некорректные данные для постановки/снятии лайка'));
+        next(new BadRequestError('Некорректный Id карточки'));
       } else {
         next(err);
       }

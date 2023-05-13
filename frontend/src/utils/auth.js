@@ -1,4 +1,4 @@
-export const BASE_URL = "https://auth.nomoreparties.co";
+export const BASE_URL = "http://localhost:3005";
 
 export const checkResponse = (res) => {
   if (res.ok) {
@@ -12,6 +12,7 @@ export const checkResponse = (res) => {
 export const register = (password, email) => {
   return fetch(`${BASE_URL}/signup`, {
     method: "POST",
+    credentials: 'include', // теперь куки посылаются вместе с запросом
     headers: {
       Accept: "application/json",
       "Content-Type": "application/json",
@@ -25,6 +26,7 @@ export const register = (password, email) => {
 export const authorize = (password, email) => {
   return fetch(`${BASE_URL}/signin`, {
     method: "POST",
+    credentials: 'include', // теперь куки посылаются вместе с запросом
     headers: {
       Accept: "application/json",
       "Content-Type": "application/json",
@@ -35,13 +37,27 @@ export const authorize = (password, email) => {
   });
 };
 
-export const getContent = (token) => {
-  return fetch(`${BASE_URL}/users/me`, {
+export const signout = () => {
+  return fetch(`${BASE_URL}/signout`, {
     method: "GET",
+    credentials: 'include', // теперь куки посылаются вместе с запросом
     headers: {
       Accept: "application/json",
       "Content-Type": "application/json",
-      Authorization: `Bearer ${token}`,
+    },
+    })
+    .then((res) => {
+    return checkResponse(res);
+});
+}
+
+export const getContent = () => {
+  return fetch(`${BASE_URL}/users/me`, {
+    method: "GET",
+    credentials: 'include', // теперь куки посылаются вместе с запросом
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
     },
   })
     .then((res) => res.json())
