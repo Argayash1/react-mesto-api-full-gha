@@ -30,7 +30,7 @@ mongoose.connect(DB, {
 
 app.use(corsHandler);
 
-// Миддлвэры для безопасности
+// Миддлвэры для безопасности (лимитер и хельмет)
 // app.use(limiter);
 app.use(helmet());
 
