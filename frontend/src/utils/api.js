@@ -88,9 +88,12 @@ class Api {
 const api = new Api({
   baseUrl: "https://apii.mesto2023.students.nomoredomains.monster",
   headers: {
-    authorization: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NDVkM2FmNGQyOTg4OWMyMDQ3ZjJmM2UiLCJpYXQiOjE2ODM4NzUzNzQsImV4cCI6MTY4NDQ4MDE3NH0.uluiRlHMziNsU1rbOFd2YiM4iZlPVKDQd8n9Lootcts",
+    // authorization: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NDVkM2FmNGQyOTg4OWMyMDQ3ZjJmM2UiLCJpYXQiOjE2ODM4NzUzNzQsImV4cCI6MTY4NDQ4MDE3NH0.uluiRlHMziNsU1rbOFd2YiM4iZlPVKDQd8n9Lootcts",
     "Content-Type": "application/json",
   },
 });
+
+// https://apii.mesto2023.students.nomoredomains.monster
+// http://localhost:3005
 
 export default api;
