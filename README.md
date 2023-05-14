@@ -8,7 +8,7 @@
 
 ## Ссылки на проект
 
-IP-адрес 130.193.40.103
+IP 130.193.40.103
 
 Frontend https://mesto2023.students.nomoredomains.monster
 
