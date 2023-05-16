@@ -1,7 +1,4 @@
-export const BASE_URL = "https://apii.mesto2023.students.nomoredomains.monster";
-
-// https://apii.mesto2023.students.nomoredomains.monster
-// http://localhost:3005
+export const BASE_URL = "http://localhost:3005";
 
 export const checkResponse = (res) => {
   if (res.ok) {

@@ -132,7 +132,7 @@ function App() {
     auth
       .authorize(values.password, values.email)
       .then((data) => {
-        if (data.token) {
+        if (data.message) {
           setLoggedIn(true);
           setUserEmail(values.email);
           localStorage.setItem('authorized', 'true');
