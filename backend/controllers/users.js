@@ -103,8 +103,7 @@ const login = (req, res, next) => {
         sameSite: true, // указали браузеру посылать куки, только если запрос с того же домена
       })
       // отправим токен пользователю
-        .send({ token });
-      // .end(); // если у ответа нет тела, можно использовать метод end
+        .send({ message: 'Успешная авторизация' });
     })
     .catch(next);
 };
@@ -149,14 +148,14 @@ const updateUserData = (req, res, next, updateOptions) => {
 
 // Функция-декоратор, которая обновляет профиль пользователя
 const updateProfile = (req, res, next) => {
-  const updateOptions = req.body;
-  updateUserData(req, res, next, updateOptions);
+  const { name, about } = req.body;
+  updateUserData(req, res, next, { name, about });
 };
 
 // Функция-декоратор, которая обновляет аватар пользователя
 const updateAvatar = (req, res, next) => {
-  const updateOptions = req.body;
-  updateUserData(req, res, next, updateOptions);
+  const { avatar } = req.body;
+  updateUserData(req, res, next, { avatar });
 };
 
 module.exports = {

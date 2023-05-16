@@ -15,7 +15,6 @@ export const checkResponse = (res) => {
 export const register = (password, email) => {
   return fetch(`${BASE_URL}/signup`, {
     method: "POST",
-    credentials: 'include', // теперь куки посылаются вместе с запросом
     headers: {
       Accept: "application/json",
       "Content-Type": "application/json",

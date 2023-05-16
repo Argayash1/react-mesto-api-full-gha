@@ -94,7 +94,7 @@ function App() {
       Promise.all([api.getUserInfo(), api.getInitialCards()])
         .then(([userData, cardsData]) => {
           setCurrentUser(userData);
-          setCards(cardsData);
+          setCards(cardsData.reverse());
         })
         .catch((err) => {
           console.log(err); // выведем ошибку в консоль

@@ -2,6 +2,7 @@ class Api {
   constructor(options) {
     this._baseUrl = options.baseUrl;
     this._headers = options.headers;
+    this._credentials = options.credentials;
   }
 
   _checkResponse(res) {
@@ -13,21 +14,20 @@ class Api {
     return Promise.reject(`Ошибка: ${res.status}`);
   }
 
-  // Огромное Вам спасибо за этот метод, с большим интересом разобрался и использовал его!
   _request(endpoint, options) {
     return fetch(`${this._baseUrl}${endpoint}`, options).then(this._checkResponse);
   }
 
   getUserInfo() {
     return this._request("/users/me", {
-      credentials: 'include', // теперь куки посылаются вместе с запросом
+      credentials: this._credentials,
       headers: this._headers,
     });
   }
 
   getInitialCards() {
     return this._request("/cards", {
-      credentials: 'include', // теперь куки посылаются вместе с запросом
+      credentials: this._credentials,
       headers: this._headers,
     });
   }
@@ -35,7 +35,7 @@ class Api {
   editProfile({ name, about }) {
     return this._request("/users/me", {
       method: "PATCH",
-      credentials: 'include', // теперь куки посылаются вместе с запросом
+      credentials: this._credentials,
       headers: this._headers,
       body: JSON.stringify({
         name,
@@ -47,7 +47,7 @@ class Api {
   addNewCard({ name, link }) {
     return this._request("/cards", {
       method: "POST",
-      credentials: 'include', // теперь куки посылаются вместе с запросом
+      credentials: this._credentials,
       headers: this._headers,
       body: JSON.stringify({
         name: name,
@@ -59,7 +59,7 @@ class Api {
   deleteCard(cardId) {
     return this._request(`/cards/${cardId}`, {
       method: "DELETE",
-      credentials: 'include', // теперь куки посылаются вместе с запросом
+      credentials: this._credentials,
       headers: this._headers,
     });
   }
@@ -67,7 +67,7 @@ class Api {
   addNewAvatar({ avatar }) {
     return this._request("/users/me/avatar", {
       method: "PATCH",
-      credentials: 'include', // теперь куки посылаются вместе с запросом
+      credentials: this._credentials,
       headers: this._headers,
       body: JSON.stringify({
         avatar: avatar,
@@ -78,7 +78,7 @@ class Api {
   changeLikeCardStatus(cardId, isLiked) {
     return this._request(`/cards/${cardId}/likes`, {
       method: `${isLiked ? "PUT" : "DELETE"}`,
-      credentials: 'include', // теперь куки посылаются вместе с запросом
+      credentials: this._credentials,
       headers: this._headers,
     });
   }
@@ -88,12 +88,9 @@ class Api {
 const api = new Api({
   baseUrl: "https://apii.mesto2023.students.nomoredomains.monster",
   headers: {
-    // authorization: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NDVkM2FmNGQyOTg4OWMyMDQ3ZjJmM2UiLCJpYXQiOjE2ODM4NzUzNzQsImV4cCI6MTY4NDQ4MDE3NH0.uluiRlHMziNsU1rbOFd2YiM4iZlPVKDQd8n9Lootcts",
     "Content-Type": "application/json",
   },
+  credentials: 'include', // теперь куки посылаются вместе с запросом
 });
-
-// https://apii.mesto2023.students.nomoredomains.monster
-// http://localhost:3005
 
 export default api;
