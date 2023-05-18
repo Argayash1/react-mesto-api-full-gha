@@ -1,8 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-// import Bye from "../images/404.svg";
-
 function PageNotFound() {
   return (
     <div className="not-found">
