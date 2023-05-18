@@ -13,13 +13,6 @@ const NotFoundError = require('../errors/NotFoundError');
 const { createUser, login, logout } = require('../controllers/users');
 const { createUserValidator, loginValidator } = require('../middlewares/validators/userValidator');
 
-// Краш-тест сервера
-router.get('/crash-test', () => {
-  setTimeout(() => {
-    throw new Error('Сервер сейчас упадёт');
-  }, 0);
-});
-
 // роуты, не требующие авторизации - регистрация и логин
 router.post('/signup', createUserValidator, createUser); // добавили роутер для регистрации
 router.post('/signin', loginValidator, login); // добавили роутеры для авторизации
