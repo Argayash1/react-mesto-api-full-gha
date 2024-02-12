@@ -86,7 +86,7 @@ class Api {
 
 // Создаём экземпляр класса Api
 const api = new Api({
-  baseUrl: "https://apii.mesto2023.students.nomoredomains.monster",
+  baseUrl: "http://localhost:3001",
   headers: {
     "Content-Type": "application/json",
   },

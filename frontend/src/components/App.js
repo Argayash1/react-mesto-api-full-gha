@@ -63,8 +63,8 @@ function App() {
 
   const tokenCheck = useCallback(() => {
     // если пользователь авторизован,
-    // эта функция проверит, есть ли данные в req.user._id на сервере 
-    const authorized = localStorage.getItem('authorized')
+    // эта функция проверит, есть ли данные в req.user._id на сервере
+    const authorized = localStorage.getItem('authorized');
     if (authorized) {
       // проверим, есть ли данные в req.user._id
       auth
@@ -86,7 +86,7 @@ function App() {
     } else {
       setLoading(false);
     }
-    }, [navigate]);
+  }, [navigate]);
 
   useEffect(() => {
     tokenCheck();
@@ -156,16 +156,16 @@ function App() {
     auth
       .signout()
       .then(() => {
-        localStorage.removeItem('authorized')
+        localStorage.removeItem('authorized');
         setLoggedIn(false);
         navigate('sign-in', { replace: true });
         setUserEmail('');
         setErrorText('');
         setIsMobileMenuOpen(false);
-  })
-     .catch((err) => { 
-       console.log(err);
-  });
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }
 
   function handleCardLike(card) {
@@ -315,13 +315,7 @@ function App() {
               <Routes>
                 <Route
                   path='/sign-up'
-                  element={
-                    <Register
-                      name='register'
-                      onRegister={handleRegister}
-                      isLoading={isRegisterLoading}
-                    />
-                  }
+                  element={<Register name='register' onRegister={handleRegister} isLoading={isRegisterLoading} />}
                 />
                 <Route
                   path='/sign-in'
